@@ -1406,12 +1406,42 @@ position: absolute;
         margin-bottom: 1.5rem;
     }
 
-    .hero-rent-card {
-        position: static;
-        width: 100%;
-        max-width: 340px;
-        margin: 1.5rem auto 0;
+    
+.hero-rent-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: 320px;
+    margin: 1.5rem auto 0;
+    padding: 0.9rem 1rem;
+    box-sizing: border-box;
+}
+
+
+
+ .rent-card-text strong {
+        font-size: 0.95rem;
     }
+
+    .rent-card-text span {
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+
+    .rent-card-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+
 
     .btn {
         padding: 0.75rem 1.5rem;
