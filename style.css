@@ -344,12 +344,10 @@ body {
 }
 
 .hero h1 {
-
-max-width: 900px;
-width: 100%;
-
+    max-width: 780px;
+    width: 100%;
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(3rem, 6vw, 4.8rem);
+    font-size: clamp(2rem, 3.8vw, 3rem);
     font-weight: 700;
     color: var(--white);
     line-height: 1.05;
@@ -880,11 +878,13 @@ position: absolute;
 
 /* ========== PROPERTIES ========== */
 
-.properties-section { background: var(--off-white); }
+.properties-section {
+     background: var(--off-white);
+     }
 .properties-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 7rem;
+    grid-template-columns: repeat (5, 1fr);
+    gap: 2rem;
 }
 .property-card {
     background: white;
@@ -893,14 +893,17 @@ position: absolute;
     box-shadow: var(--shadow);
     transition: var(--transition-slow);
     border: 1px solid var(--gray-200);
+    width: 100%;
+    
 }
+
 .property-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-xl);
 }
 .property-image {
     position: relative;
-    height: 240px;
+    height: 180px;
     overflow: hidden;
 }
 .property-image img {
