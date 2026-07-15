@@ -294,7 +294,7 @@ body {
 .hero-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem 2rem;
+    padding: 1.5rem 2rem;
     display: grid;
     grid-template-columns: 1.4fr 0.6fr;
     gap: 1rem;
@@ -307,7 +307,7 @@ body {
 .hero-content {
     animation: fadeInUp 1s ease-out;
     text-align: left;
-    max-width: 7600px;
+    max-width: 760px;
 }
 
 
@@ -352,7 +352,7 @@ width: 100%;
     font-size: clamp(3rem, 6vw, 4.8rem);
     font-weight: 700;
     color: var(--white);
-    line-height: 1.08;
+    line-height: 1.05;
     margin-bottom: 0rem;
     letter-spacing: -1px;
 }
@@ -376,8 +376,8 @@ width: 100%;
 
 .hero-stats {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 1.3rem;
+    gap: 1rem;
+    margin-bottom: 0;
     flex-wrap: wrap;
 }
 
@@ -636,25 +636,10 @@ position: absolute;
     max-width: 620px;
 }
 
-.hero {
-    min-height: 58vh;
-    padding-top: 55px;
-}
 
-.hero-container {
-    padding: 1.5rem 2rem;
-    gap: 1rem;
-}
 
-.hero h1 {
-    line-height: 1.05;
-    margin-bottom: 0;
-}
 
-.hero-stats {
-    gap: 1rem;
-    margin-bottom: 0;
-}
+
 
 
 
@@ -1321,6 +1306,12 @@ position: absolute;
 
 
 /* ========== RESPONSIVE ========== */
+
+
+/*---@media(max-with: 1024) significa aplica esta reglas cuando la pantalla mida 1024pixeles o menos*/
+
+/*LAPTOP/TABLET HORIZONTAL*/
+
 @media (max-width: 1024px) {
     .hero-container { grid-template-columns: 1fr; text-align: center; }
     .hero-bg-image {
@@ -1337,6 +1328,10 @@ position: absolute;
     .contact-grid { grid-template-columns: 1fr; }
     .footer-container { grid-template-columns: 1fr 1fr; }
 }
+
+/* ========== TABLET ========== */
+
+
 
  @media (max-width: 900px){
     .nav-links {
@@ -1357,26 +1352,51 @@ position: absolute;
 
 }
 
-    }
-    .nav-links.active { right: 0; }
+    .nav-links.active {
+      right : 0;
+     }
+
     .nav-links a {
         display: block;
         padding: 0.8rem 1rem;
         font-size: 1rem;
         border-radius: var(--radius-sm);
     }
-    .mobile-menu-toggle { display: block; }
-    .section { padding: 4rem 1.2rem; }
-    .services-grid,
-    .properties-grid { grid-template-columns: repeat(2, 1fr); }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .hero h1 { font-size: 2rem; }
-    .hero-stats { gap: 1.5rem; }
-    .hero-stat-number { font-size: 1.6rem; }
-    .hero-floating-card,
-    .hero-floating-card-2 { display: none; }
 
+    .mobile-menu-toggle {
+         display: block; 
+    }
+
+    .section {
+         padding: 4rem 1.2rem;
+         }
+    .services-grid,
+    .properties-grid {
+         grid-template-columns: repeat(2, 1fr);
+         }
+    .testimonials-grid { grid-template-columns: 1fr;
+     }
+    .footer-container { 
+        grid-template-columns: 1fr 1fr;
+         gap: 2rem;
+         }
+    .hero h1 { 
+        font-size: 2rem; 
+    }
+    .hero-stats {
+         gap: 1.5rem; 
+        }
+    .hero-stat-number { 
+        font-size: 1.6rem; 
+    }
+    .hero-floating-card,
+    .hero-floating-card-2 { 
+        display: none; 
+    }
+}
+
+
+    /*Celular*/
 
 @media (max-width: 480px) {
     .properties-grid { grid-template-columns: 1fr; }
@@ -1453,11 +1473,6 @@ body {
 }
 
 
-
-
-
-
-
 .rent-card-text span {
     word-break: normal;
 }
@@ -1477,14 +1492,6 @@ body {
     font-size: 0.78rem;
     line-height: 1.25;
 }
-
-
-
-
-
-
-
-
 
 
 }
@@ -1511,10 +1518,6 @@ body {
 }
 
 
-.marcas-section{
-    margin-top:20px;
-    width:100%;
-}
 
 
 
@@ -1527,11 +1530,6 @@ body {
 }
 
 /* ✅ TAMAÑO CORREGIDO - Más grandes */
-
-
-
-
-
 
 
 .titulo-aliados{
@@ -1565,22 +1563,6 @@ body {
     position: relative;
 }
 
-
-.about-content::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:5px;
-
-    background: linear-gradient(
-        90deg,
-        #00FFFF,
-        #FFF8DC,
-        #00FFFF);
-         border-radius:25px 25px 0 0;
-}
 
 
 
@@ -1792,15 +1774,6 @@ margin: 0 auto;
     );
 }
 
-.titulo-aliados {
-    text-align: center;
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -0.3px;
-}
 
 
 
@@ -1960,21 +1933,6 @@ margin: 0 auto;
 .sura{
     border-color:#00AEEF;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2358,6 +2316,286 @@ body {
         box-sizing: border-box;
     }
 }
+
+
+/* ==================== POR QUÉ ELEGIR ==================== */
+
+.why-section {
+    background: #f7f9fc;
+}
+
+.why-section .section-header {
+    max-width: 950px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.why-section .section-title {
+    max-width: 850px;
+    margin: 0 auto 18px;
+    font-size: 2.0rem;
+    line-height: 1.2;
+}
+
+
+
+
+.why-section .section-subtitle {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(11, 61, 145, 0.10);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(15, 35, 60, 0.08);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    overflow: hidden;
+}
+
+.why-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        #42c6eb,
+        #0b3d91
+    );
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 38px rgba(15, 35, 60, 0.13);
+    border-color: rgba(11, 61, 145, 0.22);
+}
+
+.why-card h3 {
+    margin: 0 0 12px;
+    color: #10253b;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.why-card p {
+    margin: 0;
+    color: #5f6f7f;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .why-grid {
+        grid-template-columns: 1fr;
+        max-width: 720px;
+    }
+
+    .why-section .section-header {
+        margin-bottom: 38px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .why-card {
+        padding: 24px 20px;
+        border-radius: 15px;
+    }
+
+    .why-card h3 {
+        font-size: 1.12rem;
+    }
+
+    .why-card p {
+        font-size: 0.95rem;
+    }
+
+    .why-section .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* ==================== PREGUNTAS FRECUENTES ==================== */
+
+.faq-section{
+    background:#ffffff;
+    padding-top: 120px;
+    scroll-margin-top: 110px;
+
+}
+
+.faq-section .section-header{
+    max-width:900px;
+    margin:0 auto 50px;
+    text-align:center;
+}
+
+.faq-section .section-title{
+    font-size:2.2rem;
+    color:#10253b;
+    margin-bottom:15px;
+}
+
+.faq-section .section-subtitle{
+    max-width:760px;
+    margin:0 auto;
+    color:#667788;
+    line-height:1.7;
+}
+
+.faq-container{
+    max-width:1000px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.faq-item{
+    background:#fff;
+    border:1px solid rgba(11,61,145,.10);
+    border-radius:16px;
+    padding:25px 30px;
+    box-shadow:0 8px 22px rgba(0,0,0,.06);
+    transition:all .25s ease;
+}
+
+.faq-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(0,0,0,.10);
+}
+
+.faq-item h3{
+    color:#0b3d91;
+    font-size:1.20rem;
+    margin-bottom:12px;
+    line-height:1.4;
+}
+
+.faq-item p{
+    color:#555;
+    line-height:1.8;
+    margin:0;
+    font-size:1rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width:768px){
+
+    .faq-section .section-title{
+        font-size:1.9rem;
+    }
+
+    .faq-item{
+        padding:20px;
+    }
+
+    .faq-item h3{
+        font-size:1.08rem;
+    }
+
+}
+
+/* ==================== ACORDEÓN FAQ ==================== */
+
+.faq-item {
+    padding: 0;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 26px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #10253b;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.faq-question:hover {
+    color: #0b3d91;
+}
+
+.faq-symbol {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b3d91;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+
+
+
+
+
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding: 0 26px 24px;
+    color: #5f6f7f;
+    line-height: 1.8;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 350px;
+}
+
+.faq-item.active .faq-symbol {
+    transform: rotate(180deg);
+}
+
+
+
+
+@media (max-width: 600px) {
+    .faq-question {
+        padding: 18px 20px;
+        font-size: 1rem;
+    }
+
+    .faq-answer p {
+        padding: 0 20px 20px;
+    }
+}
+
 
 
 
