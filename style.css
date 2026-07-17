@@ -883,7 +883,7 @@ position: absolute;
      }
 .properties-grid {
     display: grid;
-    grid-template-columns: repeat (5, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
 }
 .property-card {
@@ -903,7 +903,7 @@ position: absolute;
 }
 .property-image {
     position: relative;
-    height: 180px;
+    height: 220px;
     overflow: hidden;
 }
 .property-image img {

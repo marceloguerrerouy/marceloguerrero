@@ -4,7 +4,6 @@
 const imagenes = {
     casas: [
         "casas-fotos/casa-1.webp",
-        "casas-fotos/casa-2.webp",
         "casas-fotos/casa-3.webp",
         "casas-fotos/casa-4.webp",
         "casas-fotos/casa-5.webp",
