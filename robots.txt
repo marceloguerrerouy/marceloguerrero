@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://marceloguerrero.com/sitemap.xml
-
-

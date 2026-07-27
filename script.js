@@ -1,226 +1,342 @@
-// GALERÍA DE PROPIEDADES
 
+
+/* =====================================================
+   GALERÍAS DE COMPAÑÍAS ASEGURADORAS
+===================================================== */
 
 const imagenes = {
-    casas: [
-        "casas-fotos/casa-1.webp",
-        "casas-fotos/casa-3.webp",
-        "casas-fotos/casa-4.webp",
-        "casas-fotos/casa-5.webp",
-        "casas-fotos/casa-6.webp",
-        "casas-fotos/casa-7.webp",
-        "casas-fotos/casa-8.webp",
-        "casas-fotos/casa-9.webp",
-        "casas-fotos/casa-10.webp"
+
+    berkley: [
+        "berkley-fotos/foto-1.webp"
     ],
 
-   
-
-apartamentos: [
-        "apartamentos-fotos/apto-1.webp",
-        "apartamentos-fotos/apto-2.webp",
-        "apartamentos-fotos/apto-3.webp",
-        "apartamentos-fotos/apto-4.webp",
-        "apartamentos-fotos/apto-5.webp",
-        "apartamentos-fotos/apto-6.webp",
-        "apartamentos-fotos/apto-7.webp",
-        "apartamentos-fotos/apto-8.webp",
-        "apartamentos-fotos/apto-9.webp",
-        "apartamentos-fotos/apto-10.webp",
-        "apartamentos-fotos/apto-11.webp"
+    bse: [
+        "bse-fotos/foto-1.webp"
     ],
 
-
+    barbus: [
+        "barbus-fotos/foto-3.webp",
     
-
- galpones: [
-        "galpones-fotos/galpon-1.webp",
-        "galpones-fotos/galpon-2.webp"
     ],
 
-    
- locales: [
-        "locales-comerciales-fotos/local-1.webp",
-        "locales-comerciales-fotos/local-2.webp",
-        "locales-comerciales-fotos/local-almacen.webp"
+    mapfre: [
+        "mapfre-fotos/foto-3.webp",
         
-        
-],
-
-
-
-
-
-
-
-chacras: [
-        "chacras-terrenos-fotos/chacra-1.webp",
-        "chacras-terrenos-fotos/chacra-2.webp"
     ],
 
-   berkley: [
-    "berkley-fotos/berkley-1.webp"
-],
+    porto: [
+        "porto-fotos/porto-foto3.webp",
+       
+    ],
 
-bse: [
-    "bse-fotos/bse-1.webp",
-    "bse-fotos/bse-2.webp",
-    "bse-fotos/bse-3.webp",
-    "bse-fotos/bse-4.webp",
-    "bse-fotos/bse-5.webp"
-],
+    sancrist: [
+        "san-cristobal-fotos/foto-3.webp",
+        
+    ],
 
-hdi: [
-    "hdi-fotos/hdi-1.webp",
-    "hdi-fotos/hdi-2.webp"
-],
+    sbi: [
+        "sbi-fotos/foto-6.webp",
+       
+    ],
 
-mapfre: [
-    "mapfre-fotos/mapfre-1.webp",
-    "mapfre-fotos/mapfre-2.webp"
-],
-    
-
-
-porto: [
-"porto-fotos/porto-1.webp",
-"porto-fotos/porto-2.webp",
-"porto-fotos/porto-3.webp"
-],
-
-
-
-sancrist: [
-"san-cristobal-fotos/san-1.webp",
-"san-cristobal-fotos/san-2.webp"
-],
-
-sbi: [
-"sbi-fotos/sbi-1.webp",
-"sbi-fotos/sbi-2.webp",
-"sbi-fotos/sbi-3.webp",
-"sbi-fotos/sbi-4.webp",
-"sbi-fotos/sbi-5.webp"
-],
-
-sura: [
-"sura-fotos/sura-1.webp",
-"sura-fotos/sura-2.webp",
-"sura-fotos/sura-3.webp"
-],
-
-
-
-
+    sura: [
+        "sura-fotos/foto-4.webp",
+        
+    ]
 
 };
+
 
 let currentGallery = [];
 let currentIndex = 0;
 
+
+/* =====================================================
+   ELEMENTOS DEL MODAL
+===================================================== */
+
 const modal = document.getElementById("modalOverlay");
-const modalImg = document.getElementById("modalImg");
 const modalCounter = document.getElementById("modalCounter");
 const modalClose = document.getElementById("modalClose");
 const modalPrev = document.getElementById("modalPrev");
 const modalNext = document.getElementById("modalNext");
 
-function abrirGaleria(categoria) {
-    currentGallery = imagenes[categoria];
-    currentIndex = 0;
-    mostrarImagen();
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+let modalImg = document.getElementById("modalImg");
+
+
+/*
+Si la imagen del modal no existe en el HTML,
+el script la crea automáticamente.
+*/
+
+if (modal && !modalImg) {
+
+    modalImg = document.createElement("img");
+
+    modalImg.id = "modalImg";
+    modalImg.className = "modal-img";
+    modalImg.alt = "Imagen de la compañía aseguradora";
+
+    const modalNav = modal.querySelector(".modal-nav");
+
+    if (modalNav) {
+        modal.insertBefore(modalImg, modalNav);
+    } else {
+        modal.appendChild(modalImg);
+    }
+
 }
 
+
+/* =====================================================
+   ABRIR GALERÍA
+===================================================== */
+
+function abrirGaleria(categoria) {
+
+    if (!imagenes[categoria] || imagenes[categoria].length === 0) {
+        console.warn("No se encontraron imágenes para:", categoria);
+        return;
+    }
+
+    if (!modal || !modalImg) {
+        console.error("No se encontró el modal de la galería.");
+        return;
+    }
+
+    currentGallery = imagenes[categoria];
+    currentIndex = 0;
+
+    mostrarImagen();
+
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =====================================================
+   CERRAR GALERÍA
+===================================================== */
+
 function cerrarGaleria() {
+
+    if (!modal) {
+        return;
+    }
+
     modal.classList.remove("active");
     document.body.style.overflow = "";
+
 }
+
+
+/* =====================================================
+   MOSTRAR IMAGEN
+===================================================== */
 
 function mostrarImagen() {
 
+    if (
+        !modalImg ||
+        !modalCounter ||
+        currentGallery.length === 0
+    ) {
+        return;
+    }
+
     modalImg.src = currentGallery[currentIndex];
-    modalCounter.textContent = (currentIndex + 1) + " / " + currentGallery.length;
+
+    modalImg.alt =
+        "Imagen " +
+        (currentIndex + 1) +
+        " de la compañía aseguradora";
+
+    modalCounter.textContent =
+        (currentIndex + 1) +
+        " / " +
+        currentGallery.length;
+
 }
+
+
+/* =====================================================
+   NAVEGACIÓN DE LA GALERÍA
+===================================================== */
 
 function imagenAnterior() {
-    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+
+    if (currentGallery.length === 0) {
+        return;
+    }
+
+    currentIndex =
+        (
+            currentIndex -
+            1 +
+            currentGallery.length
+        ) %
+        currentGallery.length;
+
     mostrarImagen();
+
 }
+
 
 function imagenSiguiente() {
-    currentIndex = (currentIndex + 1) % currentGallery.length;
+
+    if (currentGallery.length === 0) {
+        return;
+    }
+
+    currentIndex =
+        (
+            currentIndex +
+            1
+        ) %
+        currentGallery.length;
+
     mostrarImagen();
+
 }
 
-modalClose.addEventListener("click", cerrarGaleria);
-modalPrev.addEventListener("click", imagenAnterior);
-modalNext.addEventListener("click", imagenSiguiente);
 
-document.addEventListener("keydown", function(e) {
-    if (!modal.classList.contains("active")) return;
-    if (e.key === "Escape") cerrarGaleria();
-    if (e.key === "ArrowLeft") imagenAnterior();
-    if (e.key === "ArrowRight") imagenSiguiente();
-});
+/* =====================================================
+   EVENTOS DEL MODAL
+===================================================== */
 
+if (modalClose) {
+    modalClose.addEventListener("click", cerrarGaleria);
+}
 
+if (modalPrev) {
+    modalPrev.addEventListener("click", imagenAnterior);
+}
 
+if (modalNext) {
+    modalNext.addEventListener("click", imagenSiguiente);
+}
 
+if (modal) {
 
-// Protección básica contra copias
-document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-});
+    modal.addEventListener("click", function (event) {
 
-emailjs.init("5f1M7I51Zw5bALWBc");
+        if (event.target === modal) {
+            cerrarGaleria();
+        }
 
-document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    emailjs.sendForm(
-        "service_8zsx485",
-        "template_rizo0z5",
-        this
-    )
-    .then(function() {
-        alert("¡Mensaje enviado correctamente!");
-        document.getElementById("contactForm").reset();
-    })
-    .catch(function(error) {
-        alert("Error al enviar el mensaje.");
-        console.error(error);
     });
+
+}
+
+
+document.addEventListener("keydown", function (event) {
+
+    if (!modal || !modal.classList.contains("active")) {
+        return;
+    }
+
+    if (event.key === "Escape") {
+        cerrarGaleria();
+    }
+
+    if (event.key === "ArrowLeft") {
+        imagenAnterior();
+    }
+
+    if (event.key === "ArrowRight") {
+        imagenSiguiente();
+    }
+
 });
 
 
+/* =====================================================
+   PROTECCIÓN BÁSICA DEL SITIO
+===================================================== */
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+});
+
+
+/* =====================================================
+   FORMULARIO CON EMAILJS
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const formulario = document.getElementById("contactForm");
+
+    if (!formulario) {
+        return;
+    }
+
+    if (typeof emailjs === "undefined") {
+        console.error("EmailJS no está cargado.");
+        return;
+    }
+
+    emailjs.init({
+        publicKey: "5f1M7I51Zw5bALWBc"
+    });
+
+    formulario.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const botonEnviar =
+            formulario.querySelector('button[type="submit"]');
+
+        if (botonEnviar) {
+            botonEnviar.disabled = true;
+            botonEnviar.textContent = "Enviando...";
+        }
+
+        emailjs.sendForm(
+            "service_8zsx485",
+            "template_rizo0z5",
+            formulario
+        )
+        .then(function () {
+
+            alert("¡Mensaje enviado correctamente!");
+
+            formulario.reset();
+
+        })
+        
+.catch(function (error) {
+
+    console.error("Error completo:", error);
+
+    alert(
+        "Estado: " + error.status + "\n" +
+        "Detalle: " + error.text
+    );
+
+})
 
 
 
-/* ==================== ACORDEÓN FAQ ==================== */
 
-const faqItems = document.querySelectorAll(".faq-item");
+        .finally(function () {
 
-faqItems.forEach((item) => {
-
-    const question = item.querySelector(".faq-question");
-
-    question.addEventListener("click", () => {
-
-        // Cierra las demás preguntas
-        faqItems.forEach((otherItem) => {
-            if (otherItem !== item) {
-                otherItem.classList.remove("active");
+            if (botonEnviar) {
+                botonEnviar.disabled = false;
+                botonEnviar.innerHTML =
+                    '<i class="fas fa-paper-plane"></i> Enviar mensaje';
             }
+
         });
 
-        // Abre o cierra la actual
-        item.classList.toggle("active");
-
     });
 
 });
+
+
+
+
 
 
 
