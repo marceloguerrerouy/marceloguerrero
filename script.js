@@ -336,6 +336,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+/* =====================================================
+   BOTÓN WHATSAPP DEL HERO
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const botonSeguroWhatsapp =
+        document.getElementById("botonSeguroWhatsapp");
+
+    if (!botonSeguroWhatsapp) {
+        return;
+    }
+
+    botonSeguroWhatsapp.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const enlaceWhatsapp = botonSeguroWhatsapp.href;
+
+        window.location.href = enlaceWhatsapp;
+    });
+});
 
 
 
