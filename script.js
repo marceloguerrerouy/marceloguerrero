@@ -280,6 +280,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (typeof emailjs === "undefined") {
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("No se pudo cargar el envío. Podés contactarme por WhatsApp o correo.");
+        });
         console.error("EmailJS no está cargado.");
         return;
     }
