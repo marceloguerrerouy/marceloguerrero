@@ -1051,7 +1051,8 @@ position: absolute;
 
 /*ponte en contacto*/
 .contact-info h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Manrope';
+
     font-size: 2rem;
     font-weight: 700;
     color: var(--gray-900);
@@ -1205,7 +1206,7 @@ position: absolute;
 .footer-brand .logo-icon img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     border-radius:inherit;
     position:relative;
@@ -1266,7 +1267,7 @@ position: absolute;
 
 
 
-.footer-brand p { font-size: 0.9rem; line-height: 1.6; color: var(--gray-500); }
+.footer-brand p { font-size: 0.9rem; line-height: 1.6; color: #9CA3AF; }
 
 .footer h5 {
     margin-top: 0;
@@ -1299,7 +1300,7 @@ position: absolute;
     border-top: 1px solid rgba(255,255,255,0.08);
     text-align: center;
     font-size: 0.85rem;
-    color: var(--gray-500);
+    color: #9CA3AF;
 }
 .footer-social { display: flex; gap: 0.8rem; margin-top: 1rem; }
 .footer-social a {
@@ -1979,7 +1980,7 @@ margin: 0 auto;
 
 
 .about-content h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Manrope';
     font-size: 2.8rem;
     font-weight: 600;
 
@@ -2470,7 +2471,7 @@ body {
 
 
 .contact-title{
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Manrope';
     font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 600;
     color: #ffffff;
