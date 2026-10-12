@@ -45,6 +45,10 @@ jobs:
           
           except Exception as error:
               print("Tipo de error:", type(error).__name__)
+          
+               if getattr(error, "code", None) == 403:
+                    print("Detalle de EmailJS:", error.read().decode("utf-8", errors="replace")[:500])
+              
               if hasattr(error, "code"):
                   print("Código HTTP:", error.code)
               else:
