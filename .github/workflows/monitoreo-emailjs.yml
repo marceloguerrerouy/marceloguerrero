@@ -1,4 +1,3 @@
-
 name: Monitoreo EmailJS - Marcelo Seguros
 
 on:
@@ -23,10 +22,18 @@ jobs:
           import json
           import urllib.parse
           import urllib.request
+          import urllib.error
+
+          public_key = os.environ.get("EMAILJS_PUBLIC_KEY")
+          private_key = os.environ.get("EMAILJS_PRIVATE_KEY")
+
+          if not public_key or not private_key:
+              print("ERROR: Faltan claves de EmailJS en GitHub Secrets.")
+              raise SystemExit(1)
 
           params = urllib.parse.urlencode({
-              "user_id": os.environ["EMAILJS_PUBLIC_KEY"],
-              "accessToken": os.environ["EMAILJS_PRIVATE_KEY"],
+              "user_id": public_key,
+              "accessToken": private_key,
               "page": 1,
               "count": 50,
               "errors_only": "true"
@@ -34,34 +41,27 @@ jobs:
 
           url = "https://api.emailjs.com/api/v1.1/history?" + params
 
-          request = urllib.request.Request(url)
+          print("Consultando historial de EmailJS...")
 
           try:
+              request = urllib.request.Request(url)
+
               with urllib.request.urlopen(request, timeout=20) as response:
                   data = json.load(response)
 
-
-
-          
-          except Exception as error:
-              print("Tipo de error:", type(error).__name__)
-          
-               if getattr(error, "code", None) == 403:
-                    print("Detalle de EmailJS:", error.read().decode("utf-8", errors="replace")[:500])
-              
-              if hasattr(error, "code"):
-                  print("Código HTTP:", error.code)
-              else:
-                  print("Error de conexión o ejecución.")
+          except urllib.error.HTTPError as error:
+              print("Error HTTP:", error.code)
+              print("EmailJS rechazo la consulta.")
+              print("No se mostrara el contenido de la respuesta para proteger datos confidenciales.")
               raise SystemExit(1)
 
-
-
-       
+          except Exception as error:
+              print("Error de conexion o ejecucion:", type(error).__name__)
+              raise SystemExit(1)
 
           rows = data.get("rows", [])
 
-          print("Consulta a EmailJS realizada correctamente.")
-          print("Registros de error encontrados:", len(rows))
+          print("Consulta realizada correctamente.")
+          print("Registros devueltos:", len(rows))
           print("Esta prueba no envia correos.")
           PY
