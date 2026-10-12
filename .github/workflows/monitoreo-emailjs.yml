@@ -39,9 +39,19 @@ jobs:
           try:
               with urllib.request.urlopen(request, timeout=20) as response:
                   data = json.load(response)
-          except Exception:
-              print("No se pudo consultar EmailJS.")
-              raise SystemExit(1)
+
+except Exception as error:
+    print("Tipo de error:", type(error).__name__)
+    if hasattr(error, "code"):
+        print("Código HTTP:", error.code)
+    else:
+        print("Error de conexión o ejecución.")
+    raise SystemExit(1)
+
+
+
+
+       
 
           rows = data.get("rows", [])
 
