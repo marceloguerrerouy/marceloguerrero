@@ -258,19 +258,6 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/* =====================================================
-   PROTECCIÓN BÁSICA DEL SITIO
-===================================================== */
-
-document.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-});
-
-
-/* =====================================================
-   FORMULARIO CON EMAILJS
-===================================================== */
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const formulario = document.getElementById("contactForm");
@@ -295,6 +282,11 @@ document.addEventListener("DOMContentLoaded", function () {
     formulario.addEventListener("submit", function (event) {
 
         event.preventDefault();
+                const ultimoEnvio = Number(localStorage.getItem("mggUltimoEnvio") || 0);
+        if (Date.now() - ultimoEnvio < 300000) {
+            alert("Ya enviaste una consulta hace un momento. Esperá unos minutos antes de enviar otra.");
+            return;
+        }
 
         const botonEnviar =
             formulario.querySelector('button[type="submit"]');
@@ -314,17 +306,13 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("¡Mensaje enviado correctamente!");
 
             formulario.reset();
+                        localStorage.setItem("mggUltimoEnvio", String(Date.now()));
 
         })
         
 .catch(function (error) {
-
     console.error("Error completo:", error);
-
-    alert(
-        "Estado: " + error.status + "\n" +
-        "Detalle: " + error.text
-    );
+    alert("No se pudo enviar tu consulta. Por favor, escribinos por WhatsApp.");
 
 })
 
@@ -336,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (botonEnviar) {
                 botonEnviar.disabled = false;
                 botonEnviar.innerHTML =
-                    '<i class="fas fa-paper-plane"></i> Enviar mensaje';
+                                        '<i class="fas fa-paper-plane"><svg class="icono" aria-hidden="true"><use href="#i-avion"/></svg></i> Enviar mensaje';
             }
 
         });
